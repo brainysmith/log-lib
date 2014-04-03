@@ -5,8 +5,8 @@ It allow set the URL to logging configuration file by library's spi.
 If no URL specified the file the library try to find 'logger.xml' in the root class path of the specified class loader.
 Also the library route all JUL log record to the SL4J API and make avaliable the following substitution string in the
 the logging configuration file:
-    * dir.logs - a desired directory for the logs which must be specified by library's spi;
-    * app.name - a name of the application which use the library;
+* dir.logs - a desired directory for the logs which must be specified by library's spi;
+* app.name - a name of the application which use the library;
 
 Example of the logging configuration file
 ----------------------------

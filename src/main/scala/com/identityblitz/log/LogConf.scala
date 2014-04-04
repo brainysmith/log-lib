@@ -1,4 +1,4 @@
-package com.blitz.log
+package com.identityblitz.log
 
 import java.util.logging.Level
 import org.slf4j.bridge.SLF4JBridgeHandler
@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory
 import ch.qos.logback.classic.LoggerContext
 import ch.qos.logback.classic.joran.JoranConfigurator
 import ch.qos.logback.core.util.StatusPrinter
-import com.blitz.log.service.ServiceProvider
+import com.identityblitz.log.service.ServiceProvider
 import java.net.URL
 
 /**

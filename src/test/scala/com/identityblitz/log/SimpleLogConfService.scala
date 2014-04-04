@@ -1,12 +1,12 @@
-package com.blitz.log
+package com.identityblitz.log
 
-import com.blitz.log.service.spi.LogConfService
+import com.identityblitz.log.service.spi.LogConfService
 
 /**
  */
 class SimpleLogConfService extends LogConfService {
 
-  override val levelsOfLogs: Map[String, String] = Map("root" -> "DEBUG", "com.blitz.scs" -> "TRACE")
+  override val levelsOfLogs: Map[String, String] = Map("root" -> "DEBUG", "com.identityblitz.scs" -> "TRACE")
 
   override val confUrlOfLogs: Option[String] = None
 

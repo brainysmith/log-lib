@@ -1,9 +1,9 @@
-package com.blitz.log
+package com.identityblitz.log
 
 import org.scalatest._
 import org.slf4j.LoggerFactory
 import java.io.File
-import com.blitz.log.service.ServiceProvider
+import com.identityblitz.log.service.ServiceProvider
 
 /**
  */
@@ -12,9 +12,9 @@ import com.blitz.log.service.ServiceProvider
 class LogConfTest extends FlatSpec with Matchers {
 
   val root = LoggerFactory.getLogger("root")
-  val blitzLogger = LoggerFactory.getLogger("com.blitz")
-  val scsLogger = LoggerFactory.getLogger("com.blitz.scs")
-  val cryptLogger = LoggerFactory.getLogger("com.blitz.crypt")
+  val blitzLogger = LoggerFactory.getLogger("com.identityblitz")
+  val scsLogger = LoggerFactory.getLogger("com.identityblitz.scs")
+  val cryptLogger = LoggerFactory.getLogger("com.identityblitz.crypt")
   val unspecifiedLogger = LoggerFactory.getLogger("com.unspecified")
 
   val appName = "test"

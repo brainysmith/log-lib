@@ -13,8 +13,8 @@
     </encoder>
   </appender>
 
-  <logger name="com.blitz" level="INFO" />
-  <logger name="com.blitz.scs" level="DEBUG" />
+  <logger name="com.identityblitz" level="INFO" />
+  <logger name="com.identityblitz.scs" level="DEBUG" />
   
   <root level="TRACE">
     <appender-ref ref="STDOUT" />

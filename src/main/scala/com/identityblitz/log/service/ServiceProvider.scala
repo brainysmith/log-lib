@@ -1,7 +1,7 @@
-package com.blitz.log.service
+package com.identityblitz.log.service
 
 import java.util.ServiceLoader
-import com.blitz.log.service.spi.LogConfService
+import com.identityblitz.log.service.spi.LogConfService
 
 /**
  */

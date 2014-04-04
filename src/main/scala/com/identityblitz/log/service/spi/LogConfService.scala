@@ -1,4 +1,4 @@
-package com.blitz.log.service.spi
+package com.identityblitz.log.service.spi
 
 /**
  */

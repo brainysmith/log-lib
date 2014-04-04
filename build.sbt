@@ -3,7 +3,7 @@ import JacocoPlugin._
  
 name := "log-lib"
 
-organization := "com.blitz"
+organization := "com.identityblitz"
 
 version := "1.0"
 

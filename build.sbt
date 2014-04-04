@@ -9,6 +9,8 @@ version := "1.0"
 
 scalaVersion := "2.10.3"
 
+crossPaths := false
+
 libraryDependencies ++= Seq(
     "org.slf4j" % "jul-to-slf4j" % "1.6.6",
     "ch.qos.logback" % "logback-classic" % "1.0.7",

@@ -9,15 +9,20 @@ import ch.qos.logback.classic.joran.JoranConfigurator
 import ch.qos.logback.core.util.StatusPrinter
 import com.identityblitz.log.service.ServiceProvider
 import java.net.URL
+import java.io.File
 
 /**
  *
  */
 object LogConf {
 
-  def doConfigure(cl: ClassLoader, appName: String) {
+  private val CONF_URL_CONF_NAME = "conf-url"
+  private val DIR_CONF_NAME = "dir"
+  private val LEVELS_CONF_NAME = "levels"
 
-    val conf = ServiceProvider.confService
+  private val confSp = ServiceProvider.confService
+
+  def doConfigure(cl: ClassLoader, appName: String) {
 
     Option(java.util.logging.Logger.getLogger("")).map{root =>
       root.setLevel(Level.FINEST)
@@ -33,16 +38,19 @@ object LogConf {
       configurator.setContext(loggerCtx)
       loggerCtx.reset()
       loggerCtx.putProperty("app.name", appName)
-      loggerCtx.putProperty("dir.logs", conf.dirOfLogs)
+      loggerCtx.putProperty("dir.logs", confSp.getOptString(DIR_CONF_NAME).getOrElse{
+        System.getProperty("user.home") + File.pathSeparator + "blitz"
+      })
 
       try {
-        conf.confUrlOfLogs.map(new URL(_)).orElse(Option(cl.getResource("logger.xml"))).orElse{
-          println("error: URL of a logger configuration not specified and logger.xml not found in class path")
-          throw new IllegalStateException("error: URL of a logger configuration not specified and logger.xml not " +
-            "found in class path")
+        confSp.getOptString(CONF_URL_CONF_NAME).map(new URL(_))
+          .orElse(Option(cl.getResource("logger.xml")))
+          .orElse{
+          println("log-lib: use the default logger configuration")
+          Option(LogConf.getClass.getClassLoader.getResource("default-logger.xml"))
         }.map(configurator.doConfigure)
 
-        conf.levelsOfLogs.foreach{
+        confSp.getMapString(LEVELS_CONF_NAME).foreach{
           case (logger, level) => loggerCtx.getLogger(logger).setLevel(ch.qos.logback.classic.Level.toLevel(level))
         }
         loggerCtx.start()

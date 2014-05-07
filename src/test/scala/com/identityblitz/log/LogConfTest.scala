@@ -11,6 +11,8 @@ import com.identityblitz.log.service.ServiceProvider
 
 class LogConfTest extends FlatSpec with Matchers {
 
+  System.setProperty("blitzConfUrl", "file:./src/test/resources/log.conf")
+
   val root = LoggerFactory.getLogger("root")
   val blitzLogger = LoggerFactory.getLogger("com.identityblitz")
   val scsLogger = LoggerFactory.getLogger("com.identityblitz.scs")
@@ -18,7 +20,7 @@ class LogConfTest extends FlatSpec with Matchers {
   val unspecifiedLogger = LoggerFactory.getLogger("com.unspecified")
 
   val appName = "test"
-  val logFilePath = ServiceProvider.confService.dirOfLogs + s"/app-$appName.log"
+  val logFilePath = ServiceProvider.confService.getOptString("dir").get + s"/app-$appName.log"
 
   "LongConf" should "correct configure of the loggers and should exist specified in configuration file." in {
     LogConf.doConfigure(getClass.getClassLoader, appName)

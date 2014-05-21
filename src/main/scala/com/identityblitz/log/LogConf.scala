@@ -51,7 +51,9 @@ object LogConf {
         }.map(configurator.doConfigure)
 
         confSp.getMapString(LEVELS_CONF_NAME).foreach{
-          case (logger, level) => loggerCtx.getLogger(logger).setLevel(ch.qos.logback.classic.Level.toLevel(level))
+          case (logger, level) =>
+            printf("log-lib: for '%s' logger set '%s' level\n", logger, level)
+            loggerCtx.getLogger(logger).setLevel(ch.qos.logback.classic.Level.toLevel(level))
         }
         loggerCtx.start()
       }

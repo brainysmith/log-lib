@@ -39,12 +39,12 @@ object LogConf {
       loggerCtx.reset()
       loggerCtx.putProperty("app.name", appName)
       loggerCtx.putProperty("dir.logs", confSp.getOptString(DIR_CONF_NAME).getOrElse{
-        System.getProperty("user.home") + File.separator + "blitz"
+        System.getProperty("user.home") + File.separator + appName
       })
 
       try {
         confSp.getOptString(CONF_URL_CONF_NAME).map(new URL(_))
-          .orElse(Option(cl.getResource("blitz-logger.xml")))
+          .orElse(Option(cl.getResource(appName + "-logger.xml")))
           .orElse{
           println("log-lib: use the default logger configuration")
           Option(LogConf.getClass.getClassLoader.getResource("default-logger.xml"))

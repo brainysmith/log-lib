@@ -5,7 +5,7 @@ name := "log-lib"
 
 organization := "com.identityblitz"
 
-version := "0.1.1"
+version := "0.1.1-SNAPSHOT"
 
 licenses := Seq("MIT License" -> url("http://www.opensource.org/licenses/mit-license.php"))
 
@@ -29,9 +29,9 @@ publishTo <<= version { (v: String) =>
   val nexus = "http://build.reaxoft.loc/store/content/repositories"
   //val nexus = "https://oss.sonatype.org/"
   if (v.trim.endsWith("SNAPSHOT"))
-    Some("snapshots" at nexus + "/blitz-dev")
+    Some("snapshots" at nexus + "/blitz-snapshots")
   else
-    Some("releases"  at nexus + "/blitz-dev")
+    Some("releases"  at nexus + "/blitz-releases")
 }
 
 libraryDependencies ++= Seq(
@@ -52,6 +52,6 @@ jacoco.settings
 //itJacoco.settings
 
 //Style Check section 
-org.scalastyle.sbt.ScalastylePlugin.Settings
+//org.scalastyle.sbt.ScalastylePlugin.Settings
  
-org.scalastyle.sbt.PluginKeys.config <<= baseDirectory { _ / "src/main/config" / "scalastyle-config.xml" }
+//org.scalastyle.sbt.PluginKeys.config <<= baseDirectory { _ / "src/main/config" / "scalastyle-config.xml" }

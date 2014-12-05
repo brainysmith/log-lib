@@ -21,7 +21,7 @@ publishArtifact in Test := false
 
 //resolvers += "Local Maven Repository" at Path.userHome.asFile.toURI.toURL + "/.m2/repository"
 
-resolvers += "Local Maven Repository" at "/opt/apache/maven/repository"
+resolvers += "Local Maven Repository" at Path.userHome.asFile.toURI.toURL + "../..//opt/apache/maven/repository"
 //.userHome.asFile.toURI.toURL + "/.m2/repository"
 
 val nexus = "http://build.reaxoft.loc/store/content/repositories/"

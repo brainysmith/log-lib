@@ -1,6 +1,6 @@
 import de.johoop.jacoco4sbt._
 import JacocoPlugin._
- 
+
 name := "log-lib"
 
 organization := "com.identityblitz"
@@ -55,3 +55,26 @@ jacoco.settings
 //org.scalastyle.sbt.ScalastylePlugin.Settings
  
 //org.scalastyle.sbt.PluginKeys.config <<= baseDirectory { _ / "src/main/config" / "scalastyle-config.xml" }
+
+pomIncludeRepository := { _ => false }
+
+pomExtra := (
+    <url>https://github.com/brainysmith/log-lib</url>
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>http://www.opensource.org/licenses/mit-license.php</url>
+        </license>
+    </licenses>
+    <developers>
+        <developer>
+            <name>Vladimir Karpov</name>
+            <email>brainysmith@gmail.com</email>
+        </developer>
+    </developers>
+    <scm>
+        <connection>scm:git:git@github.com:brainysmith/log-lib.git</connection>
+        <developerConnection>scm:git:git@github.com:brainysmith/log-lib.git</developerConnection>
+        <url>git@github.com:brainysmith/log-lib.git</url>
+    </scm>
+  )

@@ -5,7 +5,7 @@ name := "log-lib"
 
 organization := "com.identityblitz"
 
-version := "0.1.1-SNAPSHOT"
+version := "0.1.1"
 
 licenses := Seq("MIT License" -> url("http://www.opensource.org/licenses/mit-license.php"))
 
@@ -24,6 +24,7 @@ resolvers += "Local Maven Repository" at Path.userHome.asFile.toURI.toURL + "/.m
 resolvers += "Reaxoft Public Repository" at "http://build.reaxoft.loc/store/content/groups/public"
 
 val reaxoft_local_repository = "http://build.reaxoft.loc/store/content/repositories"
+val maven_central = "https://oss.sonatype.org/"
 
 credentials += Credentials("Sonatype Nexus Repository Manager", "build.reaxoft.loc", "deployment", "oracle_1")
 
@@ -31,7 +32,8 @@ publishTo <<= version { (v: String) =>
   if (v.trim.endsWith("SNAPSHOT"))
     Some("snapshots" at reaxoft_local_repository + "/blitz-snapshots")
   else
-    Some("releases"  at reaxoft_local_repository + "/blitz-releases")
+    //Some("reaxoft-releases" at reaxoft_local_repository + "/blitz-releases")
+    Some("maven-central" at maven_central + "service/local/staging/deploy/maven2")
 }
 
 libraryDependencies ++= Seq(
@@ -59,13 +61,6 @@ jacoco.settings
 pomIncludeRepository := { _ => false }
 
 pomExtra := (
-    <url>https://github.com/brainysmith/log-lib</url>
-    <licenses>
-        <license>
-            <name>MIT License</name>
-            <url>http://www.opensource.org/licenses/mit-license.php</url>
-        </license>
-    </licenses>
     <developers>
         <developer>
             <name>Vladimir Karpov</name>
